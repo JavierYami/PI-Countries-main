@@ -42,7 +42,7 @@ conn.sync({ force: true }).then(() => {
         continent: countryData.continents[0],
         capital: typeof capital === 'string' ? capital : '',
         population: countryData.population,
-        area: countryData.Area,
+        area: countryData.area,
         subregion: countryData.subregion,
       });
 
