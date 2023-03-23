@@ -1,15 +1,15 @@
 import './App.css';
-import {Routes, Route} from   'react-router-dom'
-import { useLocation } from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom'
 import LandingPage from './Components/LandingPage';
 
 function App() {
 
-  const location = useLocation();
   
   return (
     <div className="App">
-      <LandingPage></LandingPage>
+      <Routes>
+        <Route path='/' element={<LandingPage/>}/>
+      </Routes>
     </div>
   );
 }
