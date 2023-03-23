@@ -1,6 +1,7 @@
 import './App.css';
 import {Route, Routes} from 'react-router-dom'
 import LandingPage from './Components/LandingPage/LandingPage';
+import HomePage from './Components/HomePage/HomePage';
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/' element={<LandingPage/>}/>
+        <Route path='/homepage' element={<HomePage/>}/>
       </Routes>
     </div>
   );
