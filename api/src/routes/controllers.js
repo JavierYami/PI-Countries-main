@@ -17,7 +17,7 @@ const getCountryById = async (countryId) => {
     else throw new Error ('Id not found')
 }
 
-const postActivity =  async (name, difficulty, duration, season, countryId) => {
+const postActivity =  async (name, difficulty, duration, season, countriesIds) => {
 
     const activity = await Activity.create({
         name,
@@ -26,9 +26,19 @@ const postActivity =  async (name, difficulty, duration, season, countryId) => {
         season
     });
 
-    const country = await getCountryById(countryId);
+//    const  addActivities = async ( countryId) => {
 
-    await country.addActivity(activity);
+//        const country = await getCountryById(countryId);
+   
+//        await country.addActivity(activity);
+
+//     }
+    
+    countriesIds.map( async (countryId)=>{
+        const country = await getCountryById(countryId);
+        await country.addActivity(activity);
+        return 0;
+    });
 
     return activity;
 
