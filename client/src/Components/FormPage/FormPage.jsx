@@ -3,7 +3,7 @@
 const FormPage = () => {
     
     return (
-        <h1>Form</h1>
+        <h1>Create Activity</h1>
     )
 
 }

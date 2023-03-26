@@ -1,4 +1,4 @@
- import { GET_COUNTRIES, COUNTRY_DETAIL } from "./actions-types";
+ import { GET_COUNTRIES, COUNTRY_DETAIL, CLEAN_STATE } from "./actions-types";
 
  const initialState = {
     countries : [],
@@ -17,6 +17,11 @@
             return {
                 ...state,
                 countryDetail: action.payload
+            }
+        case CLEAN_STATE:
+            return {
+                ...state,
+                countryDetail: {}
             }
         default:
             return {...state}

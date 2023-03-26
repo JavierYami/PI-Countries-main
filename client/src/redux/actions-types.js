@@ -1,4 +1,5 @@
 export const GET_COUNTRIES = 'GET_COUNTRIES';
 
-export const COUNTRY_DETAIL= 'COUNTRY_DETAIL';
+export const COUNTRY_DETAIL = 'COUNTRY_DETAIL';
 
+export const CLEAN_STATE = 'CLEAN_STATE';

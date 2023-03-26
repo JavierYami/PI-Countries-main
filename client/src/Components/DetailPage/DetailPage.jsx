@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getCountryDetail } from "../../redux/actions";
+import { getCountryDetail, cleanState } from "../../redux/actions";
 
 const DetailPage = () => {
 
@@ -14,7 +14,7 @@ const DetailPage = () => {
     useEffect(()=>{
         dispatch(getCountryDetail(id));
         return () => {
-            
+            dispatch(cleanState())
         }
     }, [])
 
