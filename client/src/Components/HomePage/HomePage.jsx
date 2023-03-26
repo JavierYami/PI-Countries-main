@@ -10,7 +10,7 @@ export default function HomePage () {
     const countries = useSelector(state => state.countries);
 
     useEffect(() =>{
-        dispatch(getCountries())
+        dispatch(getCountries());
     }, [])
 
     return(

@@ -5,12 +5,13 @@ import HomePage from './Components/HomePage/HomePage';
 import FormPage from './Components/FormPage/FormPage';
 import NavBar from './Components/NavBar/NavBar';
 import { useLocation } from 'react-router-dom';
+import DetailPage from './Components/DetailPage/DetailPage';
 
 
 
 function App() {
 
-  const location = useLocation();
+  const location = useLocation(); 
 
   
   return (
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path='/homepage' element={<HomePage/>}/>
         <Route path='/create' element={<FormPage/>}/>
+        <Route path='/homepage/:id' element={<DetailPage/>}/>
       </Routes>
     </div>
   );

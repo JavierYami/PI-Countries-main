@@ -13,6 +13,11 @@
                 ...state,
                 countries: action.payload
             }
+        case COUNTRY_DETAIL:
+            return {
+                ...state,
+                countryDetail: action.payload
+            }
         default:
             return {...state}
     }
