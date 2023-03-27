@@ -56,10 +56,8 @@ router.post('/activities' , async (req, res) => {
 
      try {
 
-        let {name, difficulty, duration, season, countryId} = req.body;
-        countryId = countryId.split(',')
-        console.log(countryId);
-        const newActivity = await postActivity(name, difficulty, duration, season, countryId)
+        let {name, difficulty, duration, season, countriesIds} = req.body;
+        const newActivity = await postActivity(name, difficulty, duration, season, countriesIds)
         res.status(200).send(newActivity)
 
      } catch (error) {

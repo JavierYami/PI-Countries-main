@@ -1,8 +1,9 @@
- import { GET_COUNTRIES, COUNTRY_DETAIL, CLEAN_STATE } from "./actions-types";
+ import { GET_COUNTRIES, COUNTRY_DETAIL, CLEAN_STATE, CREATE_ACTIVITY } from "./actions-types";
 
  const initialState = {
     countries : [],
     countryDetail : {},
+    activities: [],
  }
 
  const reducer = (state = initialState, action) => {
@@ -22,6 +23,11 @@
             return {
                 ...state,
                 countryDetail: {}
+            }
+        case CREATE_ACTIVITY:
+            return {
+                ...state,
+                activities: [...state.activities, action.payload]
             }
         default:
             return {...state}

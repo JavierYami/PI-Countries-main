@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
+import { createActivity } from "../../redux/actions";
 
 const FormPage = () => {
 
@@ -13,20 +13,39 @@ const FormPage = () => {
         difficulty: 0,
         duration : 0,
         season: '',
+        countriesIds: [],
     })
 
     const handleOnChange = (event) => {
         const value = event.target.value;
         const name = event.target.name;
-        setActivity({
-            ...activity,
-            [name] : value,
-        })
+        if(name !== 'countriesIds'){
+            
+            setActivity({
+                ...activity,
+                [name] : value,
+            })
+
+        }
+        else {
+            setActivity({
+                ...activity,
+                countriesIds: [...activity.countriesIds, value]
+            })
+        }
+
+        console.log(activity.countriesIds);
     }
+
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        dispatch(createActivity(activity));
+  }
 
     return (
 
-        <form>
+        <form onSubmit={handleSubmit}>
 
             <label>Name: </label>
             <input type="text" name="name" value={activity.name} onChange={handleOnChange}/>
@@ -55,7 +74,7 @@ const FormPage = () => {
 
 
             <label >Countries: </label>
-            <select name="countries">
+            <select name="countriesIds" onChange={handleOnChange}>
                 <option value="0">Select a country</option>
                 {countries.map((country) => {
                     return <option value={country.id} key={country.id}>{country.name}</option>
@@ -63,7 +82,7 @@ const FormPage = () => {
             </select>
 
 
-            <input type="submit" value="Enviar"></input>
+            <input type="submit" value="Enviar" ></input>
 
         </form>
 
