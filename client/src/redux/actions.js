@@ -1,4 +1,4 @@
-import { GET_COUNTRIES, COUNTRY_DETAIL, CLEAN_STATE, CREATE_ACTIVITY, FILTER_CARDS, ORDER_CARDS, GET_ALL_ACTIVITIES, FILTER_COUNTRIES_BY_ACTIVITY } from "./actions-types";
+import { GET_COUNTRIES, COUNTRY_DETAIL, CLEAN_STATE, CREATE_ACTIVITY, FILTER_CARDS, ORDER_CARDS, GET_ALL_ACTIVITIES, FILTER_COUNTRIES_BY_ACTIVITY, UPDATE_INPUT_VALUE, GET_FILTERED_COUNTRIES} from "./actions-types";
 import axios from 'axios'
 
 export const getCountries = () => {
@@ -28,9 +28,8 @@ export const createActivity = (activity) => {
 }
 
 export const orderCards = (id) => {
-    return async function (dispatch) {
-        let response = await axios(`http://localhost:3001/countriesOrdered/${id}`);
-        return dispatch({type: ORDER_CARDS, payload: response.data})
+    return  function (dispatch) {
+        return dispatch({type: ORDER_CARDS, payload: id})
     }
 }
 
@@ -52,5 +51,18 @@ export const filterCountriesByActivity = (id) => {
     return async function (dispatch) {
         let response = await axios(`http://localhost:3001/countriesFilteredByActivity/${id}`);
         return dispatch({type: FILTER_COUNTRIES_BY_ACTIVITY, payload: response.data})
+    }
+}
+
+export const updateInputValue = (inputValue) => {
+    return async function (dispatch) {
+        let response = await axios.get(`http://localhost:3001/countries/?name=${inputValue}`)
+        return dispatch({type: UPDATE_INPUT_VALUE, payload:{ value: inputValue, data: response.data}})
+    }
+}
+
+export const getFilteredCountries = () => {
+    return function (dispatch) {
+        return dispatch({type: GET_FILTERED_COUNTRIES})
     }
 }

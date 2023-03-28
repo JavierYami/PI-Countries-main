@@ -56,10 +56,7 @@ const getCountryByQuery = async (countryName) => {
         }
     })
 
-    if(getCountries.length>0) return getCountries;
-
-    else throw new Error ('country not found')
-
+    return getCountries;
 }
 
 const getCountriesFiltered = async (key) => {

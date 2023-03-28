@@ -1,9 +1,10 @@
- import { GET_COUNTRIES, COUNTRY_DETAIL, CLEAN_STATE, CREATE_ACTIVITY, ORDER_CARDS, FILTER_CARDS, GET_ALL_ACTIVITIES, FILTER_COUNTRIES_BY_ACTIVITY} from "./actions-types";
+ import { GET_COUNTRIES, COUNTRY_DETAIL, CLEAN_STATE, CREATE_ACTIVITY, ORDER_CARDS, FILTER_CARDS, GET_ALL_ACTIVITIES, FILTER_COUNTRIES_BY_ACTIVITY, UPDATE_INPUT_VALUE, GET_FILTERED_COUNTRIES} from "./actions-types";
 
  const initialState = {
     countries : [],
     countryDetail : {},
     activities: [],
+    inputValue: '',
     filteredCountries: [],
  }
 
@@ -13,7 +14,8 @@
         case GET_COUNTRIES:
             return {
                 ...state,
-                countries: action.payload
+                countries: action.payload,
+                filteredCountries: action.payload,
             }
         case COUNTRY_DETAIL:
             return {
@@ -33,7 +35,7 @@
         case FILTER_CARDS:
             return {
                 ...state,
-                countries: action.payload,
+                filteredCountries: action.payload,
             }
         case GET_ALL_ACTIVITIES:
             return {
@@ -43,12 +45,29 @@
         case FILTER_COUNTRIES_BY_ACTIVITY:
             return {
                 ...state,
-                countries: action.payload,
+                filteredCountries: action.payload,
             }
         case ORDER_CARDS:
+            return {
+                ...state,
+                filteredCountries: state.filteredCountries.sort(((a, b) => {
+                    if (action.payload === 'AZ') {
+                        return a.name.localeCompare(b.name);
+                    } else if (action.payload === 'ZA') {
+                        return b.name.localeCompare(a.name);
+                    }
+                }))
+            }
+        case UPDATE_INPUT_VALUE:
             return{
                 ...state,
-                countries: action.payload,
+                inputValue: action.payload.value,
+                countries: action.payload.data,
+            }
+        case GET_FILTERED_COUNTRIES:
+            return{
+                ...state,
+                filteredCountries: state.filteredCountries,
             }
         default:
             return {...state}
