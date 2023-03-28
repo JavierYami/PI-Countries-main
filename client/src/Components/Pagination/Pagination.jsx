@@ -10,10 +10,11 @@ const Pagination = ( {totalPosts, postsPerPage, setCurrentPage} ) => {
 
     return (
         <div>
+            <button onClick={()=>setCurrentPage(pages[0])}>First</button>
             {
                 pages.map((page, index) => <button key={index} onClick={()=>setCurrentPage(page)}>{page}</button>)
             }
-            {console.log(pages)}
+            <button onClick={()=>setCurrentPage(pages.length)}>Last</button>
         </div>
     )
 }

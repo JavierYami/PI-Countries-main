@@ -69,4 +69,15 @@ const getCountryByQuery = async (countryName) => {
 
 }
 
-module.exports = {getAllCountries, getCountryById, postActivity, getAllActivities, getCountryByQuery}
+const getCountriesFiltered = async (key) => {
+
+    const countries = await Country.findAll();
+
+    const countriesFiltered = countries.filter(country => {
+        return country.continent === key;
+    })
+
+    return countriesFiltered;
+}
+
+module.exports = {getAllCountries, getCountryById, postActivity, getAllActivities, getCountryByQuery, getCountriesFiltered}

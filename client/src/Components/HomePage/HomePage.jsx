@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { getCountries } from '../../redux/actions';
+import { filterCountries, getCountries } from '../../redux/actions';
 import CountryCard from "../CountryCard/CountryCard";
 import Pagination from "../Pagination/Pagination";
 
@@ -25,9 +25,35 @@ export default function HomePage () {
         dispatch(getCountries());
     }, [])
 
+    const handleOnChange = (event) => {
+        const id = event.target.value;
+        dispatch(filterCountries(id))
+    }
+
     return(
         <div>
+
             <h1>Home Page</h1>
+
+            <div>
+
+                <select >
+                    <option value="order by" disabled='disabled'>Order by</option>
+                    <option value="AZ">A-Z</option>
+                    <option value="ZA">Z-A</option>
+                </select>
+
+                <select onChange={handleOnChange}>
+                    <option value="filter by continent" disabled='disabled'>Filter by Continent</option>
+                    <option value='Africa'>Africa</option>
+                    <option value='Asia'>Asia</option>
+                    <option value='Europe'>Europe</option>
+                    <option value='North America'>North America</option>
+                    <option value='Oceania'>Oceania</option>
+                    <option value='South America'>South America</option>
+                </select>
+
+            </div>
             {
                 currentPosts.map((country) => {
                     return (

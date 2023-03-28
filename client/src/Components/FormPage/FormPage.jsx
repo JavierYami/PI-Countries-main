@@ -112,7 +112,7 @@ const FormPage = () => {
             <div>
             <label>Difficulty: </label>
             <select name="difficulty" onChange={handleOnChange} ref={difficultyRef}>
-                <option value='0'>Select a difficulty</option>
+                <option value='0' disabled='disabled'>Select a difficulty</option>
                 <option value={1}>Easy</option>
                 <option value={2}>Moderate</option>
                 <option value={3}>Indermediate</option>
@@ -125,7 +125,7 @@ const FormPage = () => {
             <div>
             <label>Season: </label>
             <select name="season" onChange={handleOnChange}  ref={seasonRef}>
-                <option value="0">Select a season</option>
+                <option value="0" disabled='disabled'>Select a season</option>
                 <option value="Summer">Summer</option>
                 <option value="Winter">Winter</option>
                 <option value='Spring'>Spring</option>
@@ -137,7 +137,7 @@ const FormPage = () => {
             <div>
             <label >Countries: </label>
             <select name="countriesIds" onChange={handleOnChange} ref={countriesIdsRef}>
-                <option value="0">Select a country</option>
+                <option value="0" disabled='disabled'>Select a country</option>
                 {countries.map((country) => {
                     return <option value={country.id} key={country.id}>{country.name}</option>
                 })}

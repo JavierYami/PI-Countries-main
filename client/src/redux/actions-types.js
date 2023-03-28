@@ -5,3 +5,7 @@ export const COUNTRY_DETAIL = 'COUNTRY_DETAIL';
 export const CLEAN_STATE = 'CLEAN_STATE';
 
 export const CREATE_ACTIVITY = 'CREATE_ACTIVITY';
+
+export const ORDER_CARDS = 'ORDER_CARDS';
+
+export const FILTER_CARDS = 'FILTER_CARDS';
