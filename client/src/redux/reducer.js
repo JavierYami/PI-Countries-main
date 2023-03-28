@@ -1,4 +1,4 @@
- import { GET_COUNTRIES, COUNTRY_DETAIL, CLEAN_STATE, CREATE_ACTIVITY, ORDER_CARDS, FILTER_CARDS } from "./actions-types";
+ import { GET_COUNTRIES, COUNTRY_DETAIL, CLEAN_STATE, CREATE_ACTIVITY, ORDER_CARDS, FILTER_CARDS, GET_ALL_ACTIVITIES } from "./actions-types";
 
  const initialState = {
     countries : [],
@@ -34,6 +34,11 @@
             return {
                 ...state,
                 countries: action.payload
+            }
+        case GET_ALL_ACTIVITIES:
+            return {
+                ...state,
+                activities: action.payload,
             }
         default:
             return {...state}

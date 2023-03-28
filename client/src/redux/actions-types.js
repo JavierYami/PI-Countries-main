@@ -9,3 +9,5 @@ export const CREATE_ACTIVITY = 'CREATE_ACTIVITY';
 export const ORDER_CARDS = 'ORDER_CARDS';
 
 export const FILTER_CARDS = 'FILTER_CARDS';
+
+export const GET_ALL_ACTIVITIES = 'GET_ALL_ACTIVITIES'

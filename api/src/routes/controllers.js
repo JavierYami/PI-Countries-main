@@ -26,13 +26,6 @@ const postActivity =  async (name, difficulty, duration, season, countriesIds) =
         season
     });
 
-//    const  addActivities = async ( countryId) => {
-
-//        const country = await getCountryById(countryId);
-   
-//        await country.addActivity(activity);
-
-//     }
     
     countriesIds.map( async (countryId)=>{
         const country = await getCountryById(countryId);
@@ -80,4 +73,18 @@ const getCountriesFiltered = async (key) => {
     return countriesFiltered;
 }
 
-module.exports = {getAllCountries, getCountryById, postActivity, getAllActivities, getCountryByQuery, getCountriesFiltered}
+const getCountriesFilteredByActivity = async (key) => {
+
+    const country_Activities = await CountryActivities.findAll({
+        where: {activityId : key}
+    })
+
+    const countries = country_Activities.map( async (countryActivitiy) =>{
+        const country = await getCountryById(countryActivitiy.countryId)
+        return country;
+    })
+
+    return countries;
+}
+
+module.exports = {getAllCountries, getCountryById, postActivity, getAllActivities, getCountryByQuery, getCountriesFiltered, getCountriesFilteredByActivity}

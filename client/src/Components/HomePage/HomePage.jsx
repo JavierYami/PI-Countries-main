@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { filterCountries, getCountries } from '../../redux/actions';
+import { filterCountries, getAllActivities, getCountries } from '../../redux/actions';
 import CountryCard from "../CountryCard/CountryCard";
 import Pagination from "../Pagination/Pagination";
 
@@ -9,6 +9,8 @@ export default function HomePage () {
     const dispatch = useDispatch();
 
     const countries = useSelector(state => state.countries);
+
+    const activities = useSelector(state => state.activities);
 
     const [currentPage, setCurrentPage ] = useState(1);
 
@@ -23,6 +25,7 @@ export default function HomePage () {
 
     useEffect(() =>{
         dispatch(getCountries());
+        dispatch(getAllActivities());
     }, [])
 
     const handleOnChange = (event) => {
@@ -38,9 +41,10 @@ export default function HomePage () {
             <div>
 
                 <select >
-                    <option value="order by" disabled='disabled'>Order by</option>
-                    <option value="AZ">A-Z</option>
-                    <option value="ZA">Z-A</option>
+                    <option value="filter by activity" disabled='disabled'>Filter by Activity</option>
+                    {activities.map(activity => {
+                        return <option value={activity.id}>{activity.name}</option>
+                    })}
                 </select>
 
                 <select onChange={handleOnChange}>
