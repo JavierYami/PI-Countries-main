@@ -1,4 +1,4 @@
-import { GET_COUNTRIES, COUNTRY_DETAIL, CLEAN_STATE, CREATE_ACTIVITY, FILTER_CARDS, ORDER_CARDS, GET_ALL_ACTIVITIES } from "./actions-types";
+import { GET_COUNTRIES, COUNTRY_DETAIL, CLEAN_STATE, CREATE_ACTIVITY, FILTER_CARDS, ORDER_CARDS, GET_ALL_ACTIVITIES, FILTER_COUNTRIES_BY_ACTIVITY } from "./actions-types";
 import axios from 'axios'
 
 export const getCountries = () => {
@@ -44,5 +44,12 @@ export const getAllActivities = () => {
     return async function (dispatch) {
         let response = await axios ('http://localhost:3001/activities');
         return dispatch({type: GET_ALL_ACTIVITIES, payload: response.data})
+    }
+}
+
+export const filterCountriesByActivity = (id) => {
+    return async function (dispatch) {
+        let response = await axios(`http://localhost:3001/countriesFilteredByActivity/${id}`);
+        return dispatch({type: FILTER_COUNTRIES_BY_ACTIVITY, payload: response.data})
     }
 }

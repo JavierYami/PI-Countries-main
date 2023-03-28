@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { filterCountries, getAllActivities, getCountries } from '../../redux/actions';
+import { filterCountries, filterCountriesByActivity, getAllActivities, getCountries } from '../../redux/actions';
 import CountryCard from "../CountryCard/CountryCard";
 import Pagination from "../Pagination/Pagination";
 
@@ -28,9 +28,14 @@ export default function HomePage () {
         dispatch(getAllActivities());
     }, [])
 
-    const handleOnChange = (event) => {
+    const handleOnChangeContinent = (event) => {
         const id = event.target.value;
         dispatch(filterCountries(id))
+    }
+
+    const handleOnChangeActivity = (event) => {
+        const id = event.target.value;
+        dispatch(filterCountriesByActivity(id))
     }
 
     return(
@@ -40,14 +45,14 @@ export default function HomePage () {
 
             <div>
 
-                <select >
+                <select onChange={handleOnChangeActivity} >
                     <option value="filter by activity" disabled='disabled'>Filter by Activity</option>
                     {activities.map(activity => {
-                        return <option value={activity.id}>{activity.name}</option>
+                        return <option value={activity.id} key={activity.id}>{activity.name}</option>
                     })}
                 </select>
 
-                <select onChange={handleOnChange}>
+                <select onChange={handleOnChangeContinent}>
                     <option value="filter by continent" disabled='disabled'>Filter by Continent</option>
                     <option value='Africa'>Africa</option>
                     <option value='Asia'>Asia</option>
