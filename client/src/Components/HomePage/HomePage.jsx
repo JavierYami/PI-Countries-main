@@ -77,6 +77,8 @@ export default function HomePage () {
                     <option value="none" disabled= 'disabled' >Order By</option>
                     <option value="AZ">A-Z</option>
                     <option value="ZA">Z-A</option>
+                    <option value="MAXTOMIN">Max population</option>
+                    <option value="MINTOMAX">Min population</option>
 
                 </select>
 

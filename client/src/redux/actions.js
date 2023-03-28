@@ -1,4 +1,4 @@
-import { GET_COUNTRIES, COUNTRY_DETAIL, CLEAN_STATE, CREATE_ACTIVITY, FILTER_CARDS, ORDER_CARDS, GET_ALL_ACTIVITIES, FILTER_COUNTRIES_BY_ACTIVITY, UPDATE_INPUT_VALUE, GET_FILTERED_COUNTRIES} from "./actions-types";
+import { GET_COUNTRIES, COUNTRY_DETAIL, CLEAN_STATE, CREATE_ACTIVITY, FILTER_CARDS, ORDER_CARDS, GET_ALL_ACTIVITIES, FILTER_COUNTRIES_BY_ACTIVITY, UPDATE_INPUT_VALUE, ORDER_BY_POPULATION} from "./actions-types";
 import axios from 'axios'
 
 export const getCountries = () => {
@@ -61,8 +61,10 @@ export const updateInputValue = (inputValue) => {
     }
 }
 
-export const getFilteredCountries = () => {
-    return function (dispatch) {
-        return dispatch({type: GET_FILTERED_COUNTRIES})
+export const orderByPopulation = (id) => {
+    return  function (dispatch) {
+        return dispatch({type: ORDER_BY_POPULATION, payload: id})
     }
 }
+
+

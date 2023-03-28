@@ -1,4 +1,4 @@
- import { GET_COUNTRIES, COUNTRY_DETAIL, CLEAN_STATE, CREATE_ACTIVITY, ORDER_CARDS, FILTER_CARDS, GET_ALL_ACTIVITIES, FILTER_COUNTRIES_BY_ACTIVITY, UPDATE_INPUT_VALUE, GET_FILTERED_COUNTRIES} from "./actions-types";
+ import { GET_COUNTRIES, COUNTRY_DETAIL, CLEAN_STATE, CREATE_ACTIVITY, ORDER_CARDS, FILTER_CARDS, GET_ALL_ACTIVITIES, FILTER_COUNTRIES_BY_ACTIVITY, UPDATE_INPUT_VALUE} from "./actions-types";
 
  const initialState = {
     countries : [],
@@ -56,19 +56,20 @@
                     } else if (action.payload === 'ZA') {
                         return b.name.localeCompare(a.name);
                     }
+                    if(action.payload === 'MAXTOMIN'){
+                        return b.population - a.population;
+                    }else if(action.payload === 'MINTOMAX'){
+                        return a.population - b.population;
+                    }
                 }))
             }
         case UPDATE_INPUT_VALUE:
             return{
                 ...state,
                 inputValue: action.payload.value,
-                countries: action.payload.data,
+                filteredCountries: action.payload.data,
             }
-        case GET_FILTERED_COUNTRIES:
-            return{
-                ...state,
-                filteredCountries: state.filteredCountries,
-            }
+
         default:
             return {...state}
     }
