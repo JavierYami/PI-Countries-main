@@ -24,7 +24,7 @@ export default function HomePage () {
 
 
     useEffect(() =>{
-        dispatch(orderCards('A-Z'))
+        dispatch(getCountries());
         dispatch(getAllActivities());
     }, [])
 
