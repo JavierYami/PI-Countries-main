@@ -87,4 +87,34 @@ const getCountriesFilteredByActivity = async (key) => {
     return countries;
 }
 
-module.exports = {getAllCountries, getCountryById, postActivity, getAllActivities, getCountryByQuery, getCountriesFiltered, getCountriesFilteredByActivity}
+const getCountriesOrdered = async (key) => {
+
+    const countries =  await getAllCountries();
+
+        function compararPorNombreAscendente(a, b) {
+        if (a.name < b.name) {
+          return -1;
+        }
+        if (a.name > b.name) {
+          return 1;
+        }
+        return 0;
+        }
+        function compararPorNombreDescendente(a, b) {
+        if (a.name > b.name) {
+              return -1;
+            }
+        if (a.name < b.name) {
+              return 1;
+            }
+        return 0;
+        }
+    
+    key === 'A-Z' ? countries.sort(compararPorNombreAscendente) : countries.sort(compararPorNombreDescendente);
+        
+
+    return countries;
+}
+
+
+module.exports = {getAllCountries, getCountryById, postActivity, getAllActivities, getCountryByQuery, getCountriesFiltered, getCountriesFilteredByActivity, getCountriesOrdered}
