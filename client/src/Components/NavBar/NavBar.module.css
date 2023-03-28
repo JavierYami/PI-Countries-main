@@ -1,0 +1,21 @@
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid rgb(205, 205, 205);
+    padding: 20px;
+    box-shadow: 0 5px 30px -10px rgb(88, 88, 88);
+    font-family: 'Roboto', sans-serif;
+}
+.button{
+    background-color: #ffeaa7;
+    border: 2px solid transparent;
+    padding: 5px 10px 5px 10px;
+    color: black;
+    border-radius: 50px;
+    transition: all 0.2s;
+}
+.button:hover{
+    background-color: #fdcb6e;
+    cursor: pointer;
+}
