@@ -61,10 +61,5 @@ export const updateInputValue = (inputValue) => {
     }
 }
 
-export const orderByPopulation = (id) => {
-    return  function (dispatch) {
-        return dispatch({type: ORDER_BY_POPULATION, payload: id})
-    }
-}
 
 
