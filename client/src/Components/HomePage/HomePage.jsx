@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { filterCountries, filterCountriesByActivity, getAllActivities, getCountries } from '../../redux/actions';
+import { filterCountries, filterCountriesByActivity, getAllActivities, getCountries, orderCards } from '../../redux/actions';
 import CountryCard from "../CountryCard/CountryCard";
 import Pagination from "../Pagination/Pagination";
 
@@ -24,7 +24,7 @@ export default function HomePage () {
 
 
     useEffect(() =>{
-        dispatch(getCountries());
+        dispatch(orderCards('A-Z'))
         dispatch(getAllActivities());
     }, [])
 
@@ -36,6 +36,11 @@ export default function HomePage () {
     const handleOnChangeActivity = (event) => {
         const id = event.target.value;
         dispatch(filterCountriesByActivity(id))
+    }
+
+    const handleOnChangeOrder = (event) => {
+        const id = event.target.value;
+        dispatch(orderCards(id))
     }
 
     return(
@@ -60,6 +65,13 @@ export default function HomePage () {
                     <option value='North America'>North America</option>
                     <option value='Oceania'>Oceania</option>
                     <option value='South America'>South America</option>
+                </select>
+
+                <select onChange={handleOnChangeOrder}>
+                    <option value="Order by" disabled='disabled'>Order By</option>
+                    <option value="A-Z">A-Z</option>
+                    <option value="Z-A">Z-A</option>
+
                 </select>
 
             </div>

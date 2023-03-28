@@ -28,8 +28,9 @@ export const createActivity = (activity) => {
 }
 
 export const orderCards = (id) => {
-    return function (dispatch) {
-        return dispatch({type: ORDER_CARDS, payload: id})
+    return async function (dispatch) {
+        let response = await axios(`http://localhost:3001/countriesOrdered/${id}`);
+        return dispatch({type: ORDER_CARDS, payload: response.data})
     }
 }
 
