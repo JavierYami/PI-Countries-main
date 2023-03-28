@@ -63,6 +63,8 @@ const getCountriesFiltered = async (key) => {
 
     const countries = await Country.findAll();
 
+    if(key === 'filter by continent') return countries;
+
     const countriesFiltered = countries.filter(country => {
         return country.continent === key;
     })
@@ -71,6 +73,8 @@ const getCountriesFiltered = async (key) => {
 }
 
 const getCountriesFilteredByActivity = async (key) => {
+
+    if(key === 'filter by activity') return await Country.findAll();
 
     const country_Activities = await CountryActivities.findAll({
         where: {activityId : key}

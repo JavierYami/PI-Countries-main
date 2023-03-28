@@ -57,14 +57,14 @@ export default function HomePage () {
                 <SearchBar/>
 
                 <select onChange={handleOnChangeActivity} >
-                    <option value="filter by activity" disabled='disabled'>Filter by Activity</option>
+                    <option value="filter by activity">Filter by Activity</option>
                     {activities.map(activity => {
                         return <option value={activity.id} key={activity.id}>{activity.name}</option>
                     })}
                 </select>
 
                 <select onChange={handleOnChangeContinent}>
-                    <option value="filter by continent" disabled='disabled'>Filter by Continent</option>
+                    <option value="filter by continent">Filter by Continent</option>
                     <option value='Africa'>Africa</option>
                     <option value='Asia'>Asia</option>
                     <option value='Europe'>Europe</option>
@@ -74,7 +74,7 @@ export default function HomePage () {
                 </select>
 
                 <select onChange={handleOnChangeOrder}>
-                    <option value="none" disabled= 'disabled' >Order By</option>
+                    <option value="none">Order By</option>
                     <option value="AZ">A-Z</option>
                     <option value="ZA">Z-A</option>
                     <option value="MAXTOMIN">Max population</option>
