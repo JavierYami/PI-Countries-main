@@ -79,10 +79,10 @@ const getCountriesFilteredByActivity = async (key) => {
         where: {activityId : key}
     })
 
-    const countries = country_Activities.map( async (countryActivitiy) =>{
+    const countries = await Promise.all(country_Activities.map(async (countryActivitiy) =>{
         const country = await getCountryById(countryActivitiy.countryId)
         return country;
-    })
+    }));
 
     return countries;
 }
