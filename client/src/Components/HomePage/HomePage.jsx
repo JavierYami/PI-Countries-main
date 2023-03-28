@@ -4,6 +4,7 @@ import { filterCountries, filterCountriesByActivity, getAllActivities, getCountr
 import CountryCard from "../CountryCard/CountryCard";
 import Pagination from "../Pagination/Pagination";
 import SearchBar from "../SearchBar/SearchBar";
+import style from '../HomePage/HomePage.module.css';
 
 export default function HomePage () {
 
@@ -48,22 +49,23 @@ export default function HomePage () {
     }
 
     return(
-        <div>
+        <div className={style.mainContainer}>
 
-            <h1>Home Page</h1>
 
-            <div>
+            <div className={style.container}>
 
                 <SearchBar/>
 
-                <select onChange={handleOnChangeActivity} >
+                <div className={style.filtersContainer}>
+
+                <select onChange={handleOnChangeActivity} className={style.input}>
                     <option value="filter by activity">Filter by Activity</option>
                     {activities.map(activity => {
                         return <option value={activity.id} key={activity.id}>{activity.name}</option>
                     })}
                 </select>
 
-                <select onChange={handleOnChangeContinent}>
+                <select onChange={handleOnChangeContinent} className={style.input}>
                     <option value="filter by continent">Filter by Continent</option>
                     <option value='Africa'>Africa</option>
                     <option value='Asia'>Asia</option>
@@ -73,7 +75,7 @@ export default function HomePage () {
                     <option value='South America'>South America</option>
                 </select>
 
-                <select onChange={handleOnChangeOrder}>
+                <select onChange={handleOnChangeOrder} className={style.input}>
                     <option value="none">Order By</option>
                     <option value="AZ">A-Z</option>
                     <option value="ZA">Z-A</option>
@@ -82,7 +84,13 @@ export default function HomePage () {
 
                 </select>
 
+                </div>
+
+
             </div>
+
+            <div className={style.cardsContainer}>
+
             {
                 currentPosts.map((country) => {
                     return (
@@ -96,6 +104,7 @@ export default function HomePage () {
                     )
                 })
             }
+            </div>
             <Pagination totalPosts={countries.length} postsPerPage={postPerPage} setCurrentPage={setCurrentPage}/>
         </div>
     )

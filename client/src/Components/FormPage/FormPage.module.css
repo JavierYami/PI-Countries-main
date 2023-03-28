@@ -1,0 +1,42 @@
+input, select{
+    border-radius: 50px;
+    border: 1px solid black;
+    padding: 5px 10px;
+    font-size: 15px;
+}
+
+label {
+    padding-bottom: 5px;
+    font-weight: 500;
+}
+
+span {
+    font-size: 14px;
+    color: #ff7675;
+}
+
+.mainContainer{
+    padding: 50px 40px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.container{
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.sendButton{
+    background-color: #ffeaa7;
+    border: 2px solid transparent;
+    padding: 5px 10px 5px 10px;
+    color: black;
+    border-radius: 50px;
+    transition: all 0.2s;
+}
+.sendButton:hover{
+    background-color: #fdcb6e;
+    cursor: pointer;
+}

@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createActivity } from "../../redux/actions";
 import validation from "./validation";
+import style from './FormPage.module.css'
 
 const FormPage = () => {
 
@@ -93,23 +94,25 @@ const FormPage = () => {
       };
 
     return (
+        
+        <div className={style.mainContainer}>
 
         <form onSubmit={handleSubmit}>
 
-            <div>
+            <div className={style.container}>
             <label>Name: </label>
             <input type="text" name="name" value={activity.name} onChange={handleOnChange}/>
             {errors.name && <span>{errors.name}</span>}
             </div>
 
-            <div>
+            <div className={style.container}>
 
             <label>Duration: </label>
             <input type="text" name="duration" value={activity.duration} onChange={handleOnChange} />
             {errors.duration && <span>{errors.duration}</span>}
             </div>
 
-            <div>
+            <div className={style.container}>
             <label>Difficulty: </label>
             <select name="difficulty" onChange={handleOnChange} ref={difficultyRef}>
                 <option value='0'>Select a difficulty</option>
@@ -122,7 +125,7 @@ const FormPage = () => {
             {errors.difficulty && <span>{errors.difficulty}</span>}
             </div>
 
-            <div>
+            <div className={style.container}>
             <label>Season: </label>
             <select name="season" onChange={handleOnChange}  ref={seasonRef}>
                 <option value="0">Select a season</option>
@@ -134,7 +137,7 @@ const FormPage = () => {
             {errors.season && <span>{errors.season}</span>}
             </div>
 
-            <div>
+            <div className={style.container}>
             <label >Countries: </label>
             <select name="countriesIds" onChange={handleOnChange} ref={countriesIdsRef}>
                 <option value="0">Select a country</option>
@@ -145,9 +148,12 @@ const FormPage = () => {
             {errors.countriesIds && <span>{errors.countriesIds}</span>}
             </div>
 
-            <input type="submit" value="Enviar" ></input>
+            <input type="submit" value="Enviar"  className={style.sendButton}></input>
 
         </form>
+
+        </div>
+
 
     )
 

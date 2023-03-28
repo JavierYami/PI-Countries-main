@@ -1,0 +1,25 @@
+.mainContainer{
+    max-width: 1000px;
+    margin: 50px auto;
+}
+.input{
+    border-radius: 50px;
+    padding: 5px 10px;
+}
+.filtersContainer{
+    display: flex;
+    justify-content: space-between;
+}
+.container{
+    padding-bottom: 40px;
+    max-width: 500px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    overflow:hidden;
+}
+.cardsContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    padding-bottom: 50px;
+}
