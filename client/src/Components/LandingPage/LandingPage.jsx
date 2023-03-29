@@ -4,8 +4,8 @@ import style from './LandingPage.module.css'
 export default function LandingPage (props) {
     return (
         <div className={style.container}>
-            <h1>Countries</h1>
-            <Link to='homepage'><button className={style.button}>Explore the world</button></Link>
+            <h1 className={style.font}>Countries</h1>
+            <Link to='homepage' className={style.buttonLink}><button className={style.button}>Explore the world</button></Link>
         </div>
 
     )
