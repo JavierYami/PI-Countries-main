@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createActivity } from "../../redux/actions";
 import validation from "./validation";
@@ -9,6 +9,8 @@ const FormPage = () => {
     const dispatch = useDispatch();
 
     const countries = useSelector((state) => state.countries)
+
+    const [submited, setSubmited] = useState(false);
 
     const [activity, setActivity] = useState({
         name: '',
@@ -91,6 +93,12 @@ const FormPage = () => {
         seasonRef.current.value = '0';
         countriesIdsRef.current.value = '0';
 
+        setSubmited(true);
+
+        setTimeout(() => {
+        setSubmited(false);
+        }, 3000);
+
       };
 
     return (
@@ -151,6 +159,8 @@ const FormPage = () => {
             <input type="submit" value="Enviar"  className={style.sendButton}></input>
 
         </form>
+
+        {submited === true ? <h1 className={style.success}>Actividad creada exitosamente</h1> : null}
 
         </div>
 
