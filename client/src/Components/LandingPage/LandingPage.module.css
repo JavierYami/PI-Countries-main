@@ -1,3 +1,40 @@
-div{
-    background-image: url();
+
+.container{
+    background-image: url('https://cdn.shopify.com/s/files/1/0330/3129/1016/products/FORWEBWorldMap_lines_cool_200x115cmcopy.jpg?v=1635401202');
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.container::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(transparent, black);
+}
+
+h1{
+    margin: 0;
+    color:white;
+    z-index: 2;
+    padding-bottom: 20px;
+}
+.button{
+    background-color: #ffeaa7;
+    border: 2px solid transparent;
+    padding: 5px 10px 5px 10px;
+    color: black;
+    border-radius: 50px;
+    transition: all 0.2s;
+}
+.button:hover{
+    background-color: #fdcb6e;
+    cursor: pointer;
+}
+a{
+    z-index: 2;
 }
