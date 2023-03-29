@@ -107,7 +107,7 @@ const FormPage = () => {
 
             <div className={style.container}>
 
-            <label>Duration: </label>
+            <label>{'Duration (hours):'} </label>
             <input type="text" name="duration" value={activity.duration} onChange={handleOnChange} />
             {errors.duration && <span>{errors.duration}</span>}
             </div>

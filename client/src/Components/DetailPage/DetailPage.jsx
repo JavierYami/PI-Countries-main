@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getCountryDetail, cleanState } from "../../redux/actions";
+import style from './DetailPage.module.css'
 
 const DetailPage = () => {
 
