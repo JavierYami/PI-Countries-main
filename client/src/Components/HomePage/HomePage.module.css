@@ -10,6 +10,7 @@
     background-color: #ffeaa7;
     background-position: right center;
     transition: 0.1s;
+    text-align: center;
 }
 .input option {
     background-color: #ffeaa7;

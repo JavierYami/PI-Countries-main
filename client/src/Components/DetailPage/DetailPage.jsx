@@ -20,15 +20,18 @@ const DetailPage = () => {
     }, [])
 
     return (
-        <div>
+        <div className={style.mainContainer}>
+            <div className={style.imgContainer}>
             <img src={countryDetail.flag} alt={`${countryDetail.name} flag`} />
-            <h1>{countryDetail.name}</h1>
-            <h1>{countryDetail.id}</h1>
-            <h2>Capital: {countryDetail.capital}</h2>
-            <h2>Continent: {countryDetail.continent}</h2>
-            <h2> Subregion: {countryDetail.subregion}</h2>
-            <h2>Area: {countryDetail.area} km2</h2>
-            <h2>Population: {countryDetail.population}</h2>
+            </div>
+            <div>
+            <h1 className={style.title}>{countryDetail.name}</h1>
+            {countryDetail.capital ? <h2><span className={style.subtitle}>Capital:</span> {countryDetail.capital} </h2> : ''}
+            <h2><span className={style.subtitle}>Continent: </span>{countryDetail.continent}</h2>
+            {countryDetail.subregion ? <h2><span className={style.subtitle}>Subregion: </span>{countryDetail.subregion} </h2> : ''}
+            <h2><span className={style.subtitle}>Area: </span>{countryDetail.area} km2</h2>
+            <h2><span className={style.subtitle}>Population: </span>{countryDetail.population}</h2>
+            </div>
         </div>
     )
 }
