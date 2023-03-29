@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { filterCountries, filterCountriesByActivity, getAllActivities, getCountries, getFilteredCountries, orderCards } from '../../redux/actions';
+import { filterCountries, filterCountriesByActivity, getAllActivities, getCountries, orderCards } from '../../redux/actions';
 import CountryCard from "../CountryCard/CountryCard";
 import Pagination from "../Pagination/Pagination";
 import SearchBar from "../SearchBar/SearchBar";
@@ -16,7 +16,7 @@ export default function HomePage () {
 
     const [currentPage, setCurrentPage ] = useState(1);
 
-    const [postPerPage] = useState(10);
+    const [postPerPage] = useState(12);
 
     const lastPostIndex = currentPage * postPerPage;
 
