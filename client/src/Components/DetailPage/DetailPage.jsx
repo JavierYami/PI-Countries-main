@@ -24,7 +24,7 @@ const DetailPage = () => {
             <div className={style.imgContainer}>
             <img src={countryDetail.flag} alt={`${countryDetail.name} flag`} />
             </div>
-            <div>
+            <div className={style.textContainer}>
             <h1 className={style.title}>{countryDetail.name}</h1>
             {countryDetail.capital ? <h2><span className={style.subtitle}>Capital:</span> {countryDetail.capital} </h2> : ''}
             <h2><span className={style.subtitle}>Continent: </span>{countryDetail.continent}</h2>

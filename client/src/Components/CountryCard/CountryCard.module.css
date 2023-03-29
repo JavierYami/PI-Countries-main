@@ -3,7 +3,18 @@
     box-shadow: 0 5px 30px -10px rgb(88, 88, 88);
     transition: transform 0.3s ease-in-out;
     transition: 0.3s;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
 }
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 .card:hover {
     transform: scale(1.10);
     background-color: #fdcb6e;
