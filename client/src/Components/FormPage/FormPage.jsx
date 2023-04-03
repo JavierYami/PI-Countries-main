@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createActivity } from "../../redux/actions";
+import { createActivity, getCountries } from "../../redux/actions";
 import validation from "./validation";
 import style from './FormPage.module.css'
 
@@ -100,6 +100,10 @@ const FormPage = () => {
         }, 3000);
 
       };
+
+    useState(()=>{
+        dispatch(getCountries())
+    })
 
     return (
         

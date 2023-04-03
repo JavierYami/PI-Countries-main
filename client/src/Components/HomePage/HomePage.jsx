@@ -66,7 +66,7 @@ export default function HomePage () {
                 </select>
 
                 <select onChange={handleOnChangeContinent} className={style.input}>
-                    <option value="filter by continent">Filter by Continent</option>
+                    <option value="0">Filter by Continent</option>
                     <option value='Africa'>Africa</option>
                     <option value='Asia'>Asia</option>
                     <option value='Europe'>Europe</option>

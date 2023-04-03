@@ -33,9 +33,15 @@
                 activities: [...state.activities, action.payload]
             }
         case FILTER_CARDS:
+            if(action.payload === '0') return {
+                ...state,
+                filteredCountries: state.countries,
+            }
             return {
                 ...state,
-                filteredCountries: action.payload,
+                filteredCountries: state.countries.filter(country => {
+                    return country.continent === action.payload;
+                })
             }
         case GET_ALL_ACTIVITIES:
             return {
@@ -51,7 +57,7 @@
             return {
                 ...state,
                 filteredCountries: state.filteredCountries.sort(((a, b) => {
-                    if (action.payload === 'AZ') {
+                    if (action.payload === 'AZ' || action.payload === 'none') {
                         return a.name.localeCompare(b.name);
                     } else if (action.payload === 'ZA') {
                         return b.name.localeCompare(a.name);
@@ -67,7 +73,9 @@
             return{
                 ...state,
                 inputValue: action.payload.value,
-                filteredCountries: action.payload.data,
+                filteredCountries: state.countries.filter(country => {
+                    return country.name.includes(state.inputValue)
+                })
             }
 
         default:

@@ -34,9 +34,8 @@ export const orderCards = (id) => {
 }
 
 export const filterCountries = (id) => {
-    return async function (dispatch) {
-        let response = await axios(`http://localhost:3001/countriesFiltered/${id}`);
-        return dispatch({type: FILTER_CARDS, payload: response.data})
+    return  function (dispatch) {
+        return dispatch({type: FILTER_CARDS, payload: id})
     }
 }
 
