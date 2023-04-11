@@ -14,7 +14,7 @@ const getCountryById = async (countryId) => {
         where: {id : countryId}
     })
     if(getCountry) return getCountry;
-    else throw new Error ('Id not found')
+    else throw new Error ('Country Not found')
 }
 
 const postActivity =  async (name, difficulty, duration, season, countriesIds) => {

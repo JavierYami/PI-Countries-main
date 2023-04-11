@@ -1,4 +1,4 @@
- import { GET_COUNTRIES, COUNTRY_DETAIL, CLEAN_STATE, CREATE_ACTIVITY, ORDER_CARDS, FILTER_CARDS, GET_ALL_ACTIVITIES, FILTER_COUNTRIES_BY_ACTIVITY, UPDATE_INPUT_VALUE} from "./actions-types";
+ import { GET_COUNTRIES, COUNTRY_DETAIL, CLEAN_STATE, CREATE_ACTIVITY, ORDER_CARDS, FILTER_CARDS, GET_ALL_ACTIVITIES, FILTER_COUNTRIES_BY_ACTIVITY, UPDATE_INPUT_VALUE, ERROR} from "./actions-types";
 
  const initialState = {
     countries : [],
@@ -6,6 +6,7 @@
     activities: [],
     inputValue: '',
     filteredCountries: [],
+    error: '',
  }
 
  const reducer = (state = initialState, action) => {
@@ -20,12 +21,18 @@
         case COUNTRY_DETAIL:
             return {
                 ...state,
-                countryDetail: action.payload
+                countryDetail: action.payload,
+            }
+        case ERROR:
+            return{
+                ...state,
+                error: action.payload,
             }
         case CLEAN_STATE:
             return {
                 ...state,
-                countryDetail: {}
+                countryDetail: {},
+                error:'',
             }
         case CREATE_ACTIVITY:
             return {

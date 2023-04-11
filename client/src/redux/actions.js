@@ -1,4 +1,4 @@
-import { GET_COUNTRIES, COUNTRY_DETAIL, CLEAN_STATE, CREATE_ACTIVITY, FILTER_CARDS, ORDER_CARDS, GET_ALL_ACTIVITIES, FILTER_COUNTRIES_BY_ACTIVITY, UPDATE_INPUT_VALUE, ORDER_BY_POPULATION} from "./actions-types";
+import { GET_COUNTRIES, COUNTRY_DETAIL, CLEAN_STATE, CREATE_ACTIVITY, FILTER_CARDS, ORDER_CARDS, GET_ALL_ACTIVITIES, FILTER_COUNTRIES_BY_ACTIVITY, UPDATE_INPUT_VALUE, ERROR } from "./actions-types";
 import axios from 'axios'
 
 export const getCountries = () => {
@@ -9,8 +9,7 @@ export const getCountries = () => {
 }
 export const getCountryDetail = (id) => {
     return async function (dispatch) {
-        let response = await axios(`http://localhost:3001/countries/${id}`)
-        return dispatch({type: COUNTRY_DETAIL, payload: response.data})
+        await axios(`http://localhost:3001/countries/${id}`).then(response => dispatch({type:COUNTRY_DETAIL, payload:response.data})).catch(error =>  dispatch({type: ERROR, payload: error.message}))
     }
 }
 
