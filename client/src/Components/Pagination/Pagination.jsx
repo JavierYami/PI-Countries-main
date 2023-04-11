@@ -11,11 +11,11 @@ const Pagination = ( {totalPosts, postsPerPage, setCurrentPage} ) => {
 
     return (
         <div className={style.container}>
-            <button onClick={()=>setCurrentPage(pages[0])}>First</button>
+            {pages.length > 0 ? <button onClick={()=>setCurrentPage(pages[0])}>First</button> :''}
             {
                 pages.map((page, index) => <button key={index} onClick={()=>setCurrentPage(page)}>{page}</button>)
             }
-            <button onClick={()=>setCurrentPage(pages.length)}>Last</button>
+            {pages.length > 0 ? <button onClick={()=>setCurrentPage(pages.length)}>Last</button> :''}
         </div>
     )
 }
