@@ -7,7 +7,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import style from '../HomePage/HomePage.module.css';
 
 export default function HomePage () {
-
+    
     const dispatch = useDispatch();
 
     const countries = useSelector(state => state.filteredCountries);

@@ -80,9 +80,7 @@
             return{
                 ...state,
                 inputValue: action.payload.value,
-                filteredCountries: state.countries.filter(country => {
-                    return country.name.includes(state.inputValue)
-                })
+                filteredCountries: action.payload.data,
             }
 
         default:

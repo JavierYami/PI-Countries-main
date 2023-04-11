@@ -9,12 +9,9 @@ const SearchBar = () => {
     const dispatch = useDispatch();
 
     const inputValue = useSelector(state => state.inputValue)
-
-    const [test, setTest] = useState(false);
     
     const handleChange = (event) => {
         dispatch(updateInputValue(event.target.value));
-        setTest(true)
     };
 
     return (
