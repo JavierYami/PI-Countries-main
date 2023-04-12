@@ -59,6 +59,7 @@ const FormPage = () => {
             })
             const country = countries.find(country => country.id === value);
             setSelectedCountries([...selectedCountries, country]);
+
         }
 
         setErrors(validation({...activity, [name]: value}))
@@ -115,6 +116,8 @@ const FormPage = () => {
         setActivity({activity, countriesIds: activity.countriesIds.filter(countryId => countryId !== id)});
         setSelectedCountries(selectedCountries.filter(selectedCountry => selectedCountry.id !== id));
     }
+    
+    const filteredCountries = countries.filter(country => !activity.countriesIds.includes(country.id));
 
     return (
         
@@ -164,7 +167,7 @@ const FormPage = () => {
             <label >Countries: </label>
             <select name="countriesIds" onChange={handleOnChange} ref={countriesIdsRef}>
                 <option value="0">Select a country</option>
-                {countries.map((country) => {
+                {filteredCountries.map((country) => {
                     return <option value={country.id} key={country.id}>{country.name}</option>
                 })}
             </select>
