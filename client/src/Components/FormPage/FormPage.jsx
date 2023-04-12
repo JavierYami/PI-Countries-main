@@ -96,6 +96,8 @@ const FormPage = () => {
           countriesIds: "",
         });
 
+        setSelectedCountries([]);
+
         difficultyRef.current.value = '0';
         seasonRef.current.value = '0';
         countriesIdsRef.current.value = '0';
