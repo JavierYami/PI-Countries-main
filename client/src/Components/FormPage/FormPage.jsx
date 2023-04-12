@@ -1,6 +1,6 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createActivity, getCountries } from "../../redux/actions";
+import { createActivity, getCountries, getCountryDetail } from "../../redux/actions";
 import validation from "./validation";
 import style from './FormPage.module.css'
 
@@ -8,9 +8,11 @@ const FormPage = () => {
 
     const dispatch = useDispatch();
 
-    const countries = useSelector((state) => state.countries)
+    const countries = useSelector((state) => state.countries);
 
     const [submited, setSubmited] = useState(false);
+
+    const [selectedCountries, setSelectedCountries] = useState([])
 
     const [activity, setActivity] = useState({
         name: '',
@@ -55,13 +57,17 @@ const FormPage = () => {
                 ...activity,
                 countriesIds: [...activity.countriesIds, value]
             })
+            const country = countries.find(country => country.id === value);
+            setSelectedCountries([...selectedCountries, country]);
         }
 
         setErrors(validation({...activity, [name]: value}))
 
+
     }
 
     const handleSubmit = (event) => {
+
         event.preventDefault();
       
         const errors = validation(activity);
@@ -101,9 +107,14 @@ const FormPage = () => {
 
       };
 
-    useState(()=>{
-        dispatch(getCountries())
-    })
+    useEffect(()=> {
+        dispatch(getCountries());
+    }, [])
+
+    const deleteSelected = (id) => {
+        setActivity({activity, countriesIds: activity.countriesIds.filter(countryId => countryId !== id)});
+        setSelectedCountries(selectedCountries.filter(selectedCountry => selectedCountry.id !== id));
+    }
 
     return (
         
@@ -165,6 +176,18 @@ const FormPage = () => {
         </form>
 
         {submited === true ? <h1 className={style.success}>Actividad creada exitosamente</h1> : null}
+
+        {selectedCountries?.map(country => {
+            return (
+                <div key={country.id}>
+                    <div>
+                        <img src={country.flag} alt={`${country.name} flag`} />
+                        <p>{country.name}</p>
+                    </div>
+                    <button onClick={ () =>deleteSelected(country.id)}>Borrar</button>
+                </div>
+            )
+        })}
 
         </div>
 
