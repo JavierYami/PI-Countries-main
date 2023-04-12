@@ -20,10 +20,11 @@ export const cleanState = () => {
 }
 
 export const createActivity = (activity) => {
-    return async function (dispatch) {
-        let response = await axios.post('http://localhost:3001/activities', activity);
-        return dispatch({type: CREATE_ACTIVITY, payload: response.data})
-    }
+        return async function (dispatch) {
+            let response = await axios.post('http://localhost:3001/activities', activity).then(response => alert(`Activity ${activity.name} succesfully created`)).catch(error => alert(error.response.data.error));
+            return dispatch({type: CREATE_ACTIVITY, payload: response.data})
+        }
+   
 }
 
 export const orderCards = (id) => {

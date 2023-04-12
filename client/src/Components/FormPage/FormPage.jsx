@@ -10,8 +10,6 @@ const FormPage = () => {
 
     const countries = useSelector((state) => state.countries);
 
-    const [submited, setSubmited] = useState(false);
-
     const [selectedCountries, setSelectedCountries] = useState([])
 
     const [activity, setActivity] = useState({
@@ -102,12 +100,6 @@ const FormPage = () => {
         seasonRef.current.value = '0';
         countriesIdsRef.current.value = '0';
 
-        setSubmited(true);
-
-        setTimeout(() => {
-        setSubmited(false);
-        }, 3000);
-
       };
 
     useEffect(()=> {
@@ -179,8 +171,6 @@ const FormPage = () => {
             <input type="submit" value="Enviar"  className={style.sendButton}></input>
 
         </form>
-
-        {submited === true ? <h1 className={style.success}>Actividad creada exitosamente</h1> : null}
 
         {selectedCountries?.map(country => {
             return (
