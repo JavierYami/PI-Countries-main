@@ -19,6 +19,11 @@ const getCountryById = async (countryId) => {
 
 const postActivity =  async (name, difficulty, duration, season, countriesIds) => {
 
+     const activityName = await Activity.findOne({
+        where: {name : name}
+    })
+    if(activityName) throw new Error ('This activity alredy exists, please create another one')
+
     const activity = await Activity.create({
         name,
         difficulty,
