@@ -1,6 +1,6 @@
 const { Router } = require ('express');
 const { Activity, Country, CountryActivities} = require ('../db')
-const {getAllCountries, getCountryById, postActivity, getAllActivities, getCountryByQuery, getCountriesFiltered, getCountriesFilteredByActivity, getCountriesOrdered} = require ('./controllers')
+const {getAllCountries, getCountryById, postActivity, getAllActivities, getCountryByQuery, getCountriesFiltered, getCountriesFilteredByActivity, getCountriesOrdered, getContryActivities} = require ('./controllers')
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -103,6 +103,16 @@ router.get('/countriesOrdered/:key', async (req, res) => {
     try {
         const countriesOrdered = await getCountriesOrdered (key);
         res.status(200).json(countriesOrdered);
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+})
+
+router.get('/countryActivities/:countryId', async (req, res) => {
+    const {countryId} = req.params;
+    try {
+        const countryActivities = await getContryActivities(countryId);
+        res.status(200).json(countryActivities)
     } catch (error) {
         res.status(400).json({error: error.message})
     }

@@ -85,6 +85,8 @@ const getCountriesFilteredByActivity = async (key) => {
         where: {activityId : key}
     })
 
+    console.log(country_Activities);
+
     const countries = await Promise.all(country_Activities.map(async (countryActivitiy) =>{
         const country = await getCountryById(countryActivitiy.countryId)
         return country;
@@ -122,5 +124,20 @@ const getCountriesOrdered = async (key) => {
     return countries;
 }
 
+const getContryActivities =  async (id) => { 
+    const country_Activities = await CountryActivities.findAll({
+        where: {countryId : id}
+    })
 
-module.exports = {getAllCountries, getCountryById, postActivity, getAllActivities, getCountryByQuery, getCountriesFiltered, getCountriesFilteredByActivity, getCountriesOrdered}
+    const country_ActivitiesiDs = country_Activities.map(country_Activity => country_Activity.activityId)
+
+    const activities = await Promise.all( country_ActivitiesiDs.map(async(country_ActivityiD) =>  Activity.findOne({
+        where: {id : country_ActivityiD}
+    })))
+    
+
+    return activities;
+}
+
+
+module.exports = {getAllCountries, getCountryById, postActivity, getAllActivities, getCountryByQuery, getCountriesFiltered, getCountriesFilteredByActivity, getCountriesOrdered, getContryActivities}
