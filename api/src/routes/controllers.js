@@ -13,7 +13,24 @@ const getCountryById = async (countryId) => {
     const getCountry = await Country.findOne({
         where: {id : countryId}
     })
+
+    const country_Activities = await CountryActivities.findAll({
+        where: {countryId : countryId}
+    })
+
+    const country_ActivitiesiDs = country_Activities.map(country_Activity => country_Activity.activityId)
+
+    const activities = await Promise.all( country_ActivitiesiDs.map(async(country_ActivityiD) =>  Activity.findOne({
+        where: {id : country_ActivityiD}
+    })))
+
+    
+    getCountry.dataValues.activities = activities;
+    
+    console.log(getCountry.activities)
+
     if(getCountry) return getCountry;
+
     else throw new Error ('Country Not found')
 }
 
@@ -95,49 +112,4 @@ const getCountriesFilteredByActivity = async (key) => {
     return countries;
 }
 
-const getCountriesOrdered = async (key) => {
-
-    const countries =  await getAllCountries();
-
-        function compararPorNombreAscendente(a, b) {
-        if (a.name < b.name) {
-          return -1;
-        }
-        if (a.name > b.name) {
-          return 1;
-        }
-        return 0;
-        }
-        function compararPorNombreDescendente(a, b) {
-        if (a.name > b.name) {
-              return -1;
-            }
-        if (a.name < b.name) {
-              return 1;
-            }
-        return 0;
-        }
-    
-    key === 'A-Z' ? countries.sort(compararPorNombreAscendente) : countries.sort(compararPorNombreDescendente);
-        
-
-    return countries;
-}
-
-const getContryActivities =  async (id) => { 
-    const country_Activities = await CountryActivities.findAll({
-        where: {countryId : id}
-    })
-
-    const country_ActivitiesiDs = country_Activities.map(country_Activity => country_Activity.activityId)
-
-    const activities = await Promise.all( country_ActivitiesiDs.map(async(country_ActivityiD) =>  Activity.findOne({
-        where: {id : country_ActivityiD}
-    })))
-    
-
-    return activities;
-}
-
-
-module.exports = {getAllCountries, getCountryById, postActivity, getAllActivities, getCountryByQuery, getCountriesFiltered, getCountriesFilteredByActivity, getCountriesOrdered, getContryActivities}
+module.exports = {getAllCountries, getCountryById, postActivity, getAllActivities, getCountryByQuery, getCountriesFiltered, getCountriesFilteredByActivity}
