@@ -92,7 +92,7 @@ export default function HomePage () {
             <div className={style.cardsContainer}>
 
             {
-                currentPosts.map((country) => {
+                currentPosts?.map((country) => {
                     return (
                         <CountryCard
                         key={country.id}
