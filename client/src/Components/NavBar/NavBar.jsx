@@ -5,8 +5,8 @@ const NavBar = () => {
 
     return ( 
         <nav className={style.nav}>
-            <Link to={'homepage'}><button className={style.button}>Home</button></Link>
-            <Link to={'create'}><button className={style.button}>Create Activity</button></Link>
+            <Link to={'homepage'}><img src='https://res.cloudinary.com/dvldakcin/image/upload/v1681610337/Countries/home_fohrb4.png'className={style.navImg}/></Link>
+            <Link to={'create'}><img  src='https://res.cloudinary.com/dvldakcin/image/upload/v1681610616/Countries/plus_fkmuir.png'className={style.navImg}/></Link>
         </nav>
     )
 }

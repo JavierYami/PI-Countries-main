@@ -2,19 +2,24 @@
     display: flex;
     justify-content: space-between;
     border: 1px solid rgb(205, 205, 205);
-    padding: 20px;
+    padding: 10px;
     box-shadow: 0 5px 30px -10px rgb(88, 88, 88);
 }
-.button{
-    background-color: #ffeaa7;
+.navImg{
+    width: 30px;
+    height: 30px;
+    border-radius: 10px
+}
+.navImg{
+    background-color: white;
     border: 2px solid transparent;
     padding: 5px 10px 5px 10px;
     color: black;
-    border-radius: 50px;
+    border-radius: 15px;
     transition: all 0.2s;
     font-size: large;
 }
-.button:hover{
+.navImg:hover{
     background-color: #fdcb6e;
     cursor: pointer;
 }

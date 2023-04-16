@@ -6,6 +6,8 @@ import FormPage from './Components/FormPage/FormPage';
 import NavBar from './Components/NavBar/NavBar';
 import { useLocation } from 'react-router-dom';
 import DetailPage from './Components/DetailPage/DetailPage';
+import Footer from './Components/Footer/Footer';
+import NotFound from './Components/NotFound/NotFound';
 
 
 
@@ -17,12 +19,15 @@ function App() {
   return (
 
     <div className="App">
-      {location.pathname === '/' ? <LandingPage/> : <NavBar/>}
+      {location.pathname === '/' ? '' : <NavBar/>}
       <Routes>
+        <Route path='/' element={<LandingPage/>}/>
         <Route path='/homepage' element={<HomePage/>}/>
         <Route path='/create' element={<FormPage/>}/>
         <Route path='/homepage/:id' element={<DetailPage/>}/>
+        <Route path='*' element={<NotFound/>}/>
       </Routes>
+      {location.pathname === '/' || <Footer/>}
     </div>
   );
 

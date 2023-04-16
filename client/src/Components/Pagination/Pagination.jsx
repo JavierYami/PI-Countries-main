@@ -1,3 +1,4 @@
+import NotFound from '../NotFound/NotFound';
 import style from './Pagination.module.css'
 
 const Pagination = ( {totalPosts, postsPerPage, setCurrentPage, currentPage} ) => {
@@ -19,6 +20,7 @@ const Pagination = ( {totalPosts, postsPerPage, setCurrentPage, currentPage} ) =
             }
             {currentPage !== pages.length && pages.length > 0?<button onClick={()=>setCurrentPage(currentPage + 1)}>Next</button> : '' }
             {pages.length > 0 ? <button onClick={()=>setCurrentPage(pages.length)}>Last</button> :''}
+            {pages.length === 0 && <NotFound/>}
         </div>
     )
 }

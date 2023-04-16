@@ -117,6 +117,8 @@ const FormPage = () => {
         
         <div className={style.mainContainer}>
 
+            <h1>Create a new activity!</h1>
+
         <form onSubmit={handleSubmit}>
 
             <div className={style.container}>
@@ -172,17 +174,20 @@ const FormPage = () => {
 
         </form>
 
+        <div className={style.mainSelectedContainer}>
         {selectedCountries?.map(country => {
             return (
-                <div key={country.id}>
-                    <div>
-                        <img src={country.flag} alt={`${country.name} flag`} />
-                        <p>{country.name}</p>
+                <div key={country.id} className={style.selectedContainer}>
+                    <div >
+                        <img className={style.countryImg} src={country.flag} alt={`${country.name} flag`} />
+                        <p className={style.name}>{country.name}</p>
                     </div>
-                    <button onClick={ () =>deleteSelected(country.id)}>Borrar</button>
+                    <img src="https://res.cloudinary.com/dvldakcin/image/upload/v1681613496/Countries/remove_nllxbu.png" onClick={ () =>deleteSelected(country.id)} className={style.delete}/>
                 </div>
             )
         })}
+
+        </div>
 
         </div>
 
