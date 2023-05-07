@@ -4,7 +4,6 @@ input, select{
     padding: 5px 10px;
     font-size: 15px;
 }
-
 label {
     padding-bottom: 5px;
     font-weight: 500;
@@ -59,18 +58,21 @@ span {
 .selectedContainer{
     padding: 5px;
     margin: 20px;
-    max-width: 300px;
-    max-height: 300px;
+    max-width: 100px;
+    max-height: 100px;
 }
 .mainSelectedContainer{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 5px;
 }
 .countryImg{
     width: 30px;
     height: 30px;
     border-radius: 99999px;
 }
-.name{
-    overflow: hidden;
-}
+/* .name{
+    overflow: 'hidden';
+    white-space: 'nowrap'; 
+    text-overflow: 'ellipsis';
+} */

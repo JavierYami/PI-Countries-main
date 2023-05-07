@@ -5,9 +5,9 @@ const NavBar = () => {
 
     return (
         <nav className={style.nav}>
-            <Link to={'homepage'}><img src='https://res.cloudinary.com/dvldakcin/image/upload/v1681610337/Countries/home_fohrb4.png'className={style.navImg}/></Link>
-            <Link to={'create'}><img  src='https://res.cloudinary.com/dvldakcin/image/upload/v1681610616/Countries/plus_fkmuir.png'className={style.navImg}/></Link>
-            <Link to={'About'}><img src='https://res.cloudinary.com/dvldakcin/image/upload/v1681665748/Countries/info_dbzbnf.png' className={style.navImg}/></Link>
+            <Link to={'homepage'}><img src='https://res.cloudinary.com/dvldakcin/image/upload/v1683492844/Countries/jh4zzolmfz1gdbm2hc6a.png'className={style.navImg}/></Link>
+            <Link to={'create'} className={style.navLink}><h3 className={style.navText}>Create</h3></Link>
+            <Link to={'About'} className={style.navLink}><h3 className={style.navText}>About</h3></Link>
         </nav>
     )
 }

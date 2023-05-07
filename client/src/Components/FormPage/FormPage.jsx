@@ -180,7 +180,7 @@ const FormPage = () => {
                 <div key={country.id} className={style.selectedContainer}>
                     <div >
                         <img className={style.countryImg} src={country.flag} alt={`${country.name} flag`} />
-                        <p className={style.name}>{country.name}</p>
+                        <h5 className={style.name} style={{ overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{country.name}</h5>
                     </div>
                     <img src="https://res.cloudinary.com/dvldakcin/image/upload/v1681613496/Countries/remove_nllxbu.png" onClick={ () =>deleteSelected(country.id)} className={style.delete}/>
                 </div>
