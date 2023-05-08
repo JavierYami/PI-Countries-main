@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { Country} = require ('../src/db')
+const { Country} = require ('../src/db.js')
 
 const url = 'https://restcountries.com/v3/all';
 

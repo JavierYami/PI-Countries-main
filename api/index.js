@@ -2,7 +2,7 @@
 
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-const {Activity, Country, CountryActivities} = require ('../api/src/db');
+const {Country} = require ('../api/src/db.js');
 const {apiData} = require ('../api/src/apiData.js')
 const axios = require('axios');
 const url = 'https://restcountries.com/v3/all';
