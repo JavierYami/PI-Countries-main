@@ -2,8 +2,8 @@
 
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-const {Country} = require ('../api/src/db.js');
-const {apiData} = require ('../api/src/apiData.js')
+const {Country} = require ('./src/db.js');
+const {apiData} = require ('./src/apiData.js')
 const axios = require('axios');
 const url = 'https://restcountries.com/v3/all';
 const {PORT} = process.env || 3001;
