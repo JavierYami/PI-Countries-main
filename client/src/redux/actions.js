@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export const getCountries = () => {
     return async function(dispatch) {
-        let response = await axios('https://henrycountries.up.railway.app')
+        let response = await axios('https://henrycountries.up.railway.app/countries')
         return dispatch({ type: GET_COUNTRIES, payload: response.data})
     }
 }
